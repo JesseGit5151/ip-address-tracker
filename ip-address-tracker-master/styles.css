@@ -20,21 +20,45 @@ header h1 {
     color: white;
     font-weight: 500;
 }
+header div {
+    width: 450px;
+    position: relative;
+    text-align: center;
+    background-color: transparent;
+}
 header input {
-    width: 25%;
+    width: 100%;
     border-radius: 7px;
     padding: 12px;
+    border: none;
+    outline: none;
+}
+header button {
+    position: absolute;
+    height: 39px;
+    right: -2px;
+    width: 48px;
+    padding: 0;
+    border-radius: 0 7px 7px 0;
+    border: none;
+    background: hsl(0, 0%, 17%);
+    cursor: pointer;
+    outline: none;
+}
+header button:hover {
+    background: hsl(0, 0%, 59%);
 }
 main {
     position: absolute;
     top: 17%;
     border-radius: 11px;
-    right: 20%;
+    right: 21.4%;
     background-color: white;
     width: 57%;
     box-shadow: 0 8px 8px -4px lightgrey;
     height: 18vh;
     min-height: 135px;
+    z-index: 999;
 }
 .content-container {
     display: flex;
@@ -64,4 +88,7 @@ main {
     font-size: 2rem;
     color: lightgray;
     margin-top: 6%;
+}
+#map {
+    height: 74vh;
 }
