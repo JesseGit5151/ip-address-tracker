@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+}
+header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url('./images/pattern-bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 26vh;
+}
+header h1 {
+    color: white;
+    font-weight: 500;
+}
+header input {
+    width: 25%;
+    border-radius: 7px;
+    padding: 12px;
+}
+main {
+    position: absolute;
+    top: 17%;
+    border-radius: 11px;
+    right: 20%;
+    background-color: white;
+    width: 57%;
+    box-shadow: 0 8px 8px -4px lightgrey;
+    height: 18vh;
+    min-height: 135px;
+}
+.content-container {
+    display: flex;
+    height: 18vh;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+}
+.content-container div:not(:first-child) {
+    border-left: 1px solid lightgray;
+    padding-left: 24px;
+    height: 80px;
+}
+.content-container div h2 {
+    margin-top: auto;
+    color: hsl(0, 0%, 59%);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.content-container div p {
+    color: hsl(0, 0%, 17%);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.loader {
+    text-align: center;
+    font-size: 2rem;
+    color: lightgray;
+    margin-top: 6%;
+}
