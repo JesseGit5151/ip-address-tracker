@@ -1,13 +1,44 @@
 let main = document.querySelector("main");
-
+let headerInput = document.querySelector("header div input");
+let form = document.querySelector('form')
 let apiKey = `at_MWEu3AJfD39uMlqoddaxjZI7ZlbAv`;
-let apiURL = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=8.8.8.8`;
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
+  main.innerHTML = `<p class="loader">Loading...</p>`;
+  let apiURL = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${headerInput.value}`;
+  gatherData(apiURL)
+})
+main.innerHTML = `<p class="loader">Loading...</p>`;
+
+let map = L.map('map', {
+  center: [0, 0],
+  zoom: 3
+});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+let marker = L.marker([0, 0],{
+  draggable: true,
+  autoPan: true
+}).addTo(map);
+
+let popup = L.popup({className:'test'});
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("This marker is at: " + 'Lat: ' + e.latlng.lat.toString() + '   ' + 'Lng: ' + e.latlng.lng.toString())
+        .openOn(map);
+}
+
+marker.on('click', onMapClick);
 
 let gatherData = async (url) => {
-  main.innerHTML = `<p class="loader">Loading...</p>`;
   const res = await fetch(url);
   const data = await res.json();
-
+  console.log(data.as.domain)
+  marker.setLatLng([data.location.lat, data.location.lng])
   main.innerHTML = `<div class="content-container">
                         <div>
                         <h2>IP Address</h2>
@@ -28,12 +59,4 @@ let gatherData = async (url) => {
                         </div>
                         </div>`;
 };
-gatherData(apiURL);
-
-var map = L.map('map', {
-  center: [51.505, -0.09],
-  zoom: 13
-});
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+gatherData(`https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${headerInput.value}`)

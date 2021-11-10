@@ -55,7 +55,7 @@ main {
     right: 21.4%;
     background-color: white;
     width: 57%;
-    box-shadow: 0 8px 8px -4px lightgrey;
+    box-shadow: 0 8px 9px -4px lightslategray;
     height: 18vh;
     min-height: 135px;
     z-index: 999;
@@ -91,4 +91,7 @@ main {
 }
 #map {
     height: 74vh;
+}
+.test {
+    margin-bottom: 61px;
 }
