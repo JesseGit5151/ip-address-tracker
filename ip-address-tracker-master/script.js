@@ -13,15 +13,25 @@ main.innerHTML = `<p class="loader">Loading...</p>`;
 
 let map = L.map('map', {
   center: [0, 0],
-  zoom: 3
+  zoom: 2
 });
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+let blackIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
 let marker = L.marker([0, 0],{
   draggable: true,
-  autoPan: true
+  autoPan: true,
+  icon: blackIcon
 }).addTo(map);
 
 let popup = L.popup({className:'test'});
@@ -37,7 +47,6 @@ marker.on('click', onMapClick);
 let gatherData = async (url) => {
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data.as.domain)
   marker.setLatLng([data.location.lat, data.location.lng])
   main.innerHTML = `<div class="content-container">
                         <div>
