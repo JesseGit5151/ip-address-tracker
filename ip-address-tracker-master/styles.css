@@ -20,8 +20,11 @@ header h1 {
     color: white;
     font-weight: 500;
 }
+header form {
+    width: 30vw;
+    min-width: 291px;
+}
 header div {
-    width: 450px;
     position: relative;
     text-align: center;
     background-color: transparent;
@@ -94,4 +97,40 @@ main {
 }
 .test {
     margin-bottom: 61px;
+}
+
+@media screen and (max-width:980px){
+    header {
+        height: 261px;
+    }
+    main {
+        position: absolute;
+        top: 281px;
+        border-radius: 11px;
+        right: 50%;
+        background-color: white;
+        width: 290px;
+        box-shadow: 0 8px 9px -4px lightslategrey;
+        z-index: 999;
+        height: 288px;
+        margin: -144px -146px 0 0;
+    }
+    .content-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: auto;
+        height: inherit;
+    }
+    .content-container div:not(:first-child) {
+        border-left: none;
+        padding-left: 0px;
+        height: auto;
+    }
+    .content-container div p {
+        color: hsl(0, 0%, 17%);
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-top: 0;
+    }
 }

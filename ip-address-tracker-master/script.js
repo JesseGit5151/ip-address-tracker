@@ -48,6 +48,7 @@ let gatherData = async (url) => {
   const res = await fetch(url);
   const data = await res.json();
   marker.setLatLng([data.location.lat, data.location.lng])
+  map.panTo([data.location.lat, data.location.lng])
   main.innerHTML = `<div class="content-container">
                         <div>
                         <h2>IP Address</h2>
